@@ -59,7 +59,7 @@ return array(
 		// uncomment the following to use a MySQL database
 		
 		'db'=>array(
-			'connectionString' => 'mysql:host=shuproject.cadz025fwzk8.eu-west-1.rds.amazonaws.com;port=3360;dbname=videotainment',
+			'connectionString' => 'mysql:host=shuproject.cadz025fwzk8.eu-west-1.rds.amazonaws.com;port=3306;dbname=videotainment',
 			'emulatePrepare' => true,
 			'username' => 'root',
 			'password' => 'password',
