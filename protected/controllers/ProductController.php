@@ -7,6 +7,7 @@ class ProductController extends Controller
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
 	public $layout='//layouts/column2';
+        public $imageURL ='http://videotainment.s3.amazonaws.com'; 
 
 	/**
 	 * @return array action filters
@@ -41,31 +42,49 @@ class ProductController extends Controller
 	 * @return array access control rules
 	 */
         
-        public function actionPlaystation4()
+        public function actionViewAll()
         {
-            $ps4games = Yii::app()->db->createCommand()
-                    ->select('*')
-                    ->from('product')
-                    ->where('ProductTypeID=:id', array(':id'=>'1'))
-                    ->queryAll();
-            $model = New Product;
-            $this->render('ps4', array('games'=>$ps4games, 'model'=>$model));
+            
+            if(isset($_GET['console'])){
+                $criteria = new CDbCriteria;
+                 $criteria->select = 't.*';
+                 $criteria->join = 'LEFT JOIN `product_type` ON t.ProductTypeID = product_type.ProductTypeID';
+                 $criteria->condition = 'product_type.ProductTypeName = :value';
+                 $criteria->params = array(":value" => urldecode($_GET['console']));
+                 $games = Product::model()->findAll($criteria);      
+                 
+                 $model = New Product;
+                 $this->render('viewall', array('games'=>$games, 'model'=>$model, 'console'=> urldecode($_GET['console'])));
+            }    
+            
+            if(isset($_GET['search'])){
+                $criteria = new CDbCriteria;
+                 $criteria->select = 't.*';
+                 $criteria->condition = 't.ProductName LIKE :value';
+                 $criteria->params = array(":value" => "%".urldecode($_GET['search'])."%");
+                 $games = Product::model()->findAll($criteria);   
+                 
+                 $model = New Product;
+                 $this->render('viewall', array('games'=>$games, 'model'=>$model, 'search'=> urldecode($_GET['search'])));
+            }    
+            
+
             
         }
 	/**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
 	 */
-	public function actionView($productname)
+	public function actionView($id)
 	{
-                $id = Yii::app()->db->createCommand()
-                    ->select('ProductID')
-                    ->from('product')
-                    ->where('ProductName=:id', array(':id'=>$productname))
-                    ->queryRow();
-              
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+                $criteria = new CDbCriteria;
+                 $criteria->select = 't.ProductTypeName';
+                 $criteria->join = 'LEFT JOIN `product` ON t.ProductTypeID = product.ProductTypeID';
+                 $criteria->condition = 'product.ProductID = :value';
+                 $criteria->params = array(":value" => $id);
+                 $console = ProductType::model()->find($criteria);    
+		 $this->render('view',array(
+			'model'=>$this->loadModel($id),'console'=>$console['ProductTypeName']
 		));
 	}
 

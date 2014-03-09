@@ -16,9 +16,24 @@ $this->menu=array(
 );
 ?>
 
-<h1>View Product #<?php echo $model->ProductID; ?></h1>
+<h1>View Product</h1>
+<div id="product">
+    <div class="product-des">
+        <div class="product-img">
+            <img src="<?php echo $this->imageURL.$model->ProductImg.'.jpg'; ?>" height="270px" width="234px" />
+        </div>
+        <div class="product-info">
+            <h2><?php echo $model->ProductName.' ('.$console.')'; ?></h2>
+            <p><?php echo $model->ProductDescription; ?></p>
+            <h3>Price: £<?php echo $model->ProductPrice; ?></h3>
+            <h3>PEGI Rating: <?php echo $model->ProductPegi; ?>+</h3>
+            <?php echo CHtml::button('Order', array('submit' => array('order/create/'.$model->ProductID))); ?>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
+        </div>
+    </div>
+</div>
+
+<?php /*$this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
 		'ProductID',
@@ -29,4 +44,4 @@ $this->menu=array(
 		'ProductPrice',
 		'ProductTypeID',
 	),
-)); ?>
+));*/ ?>

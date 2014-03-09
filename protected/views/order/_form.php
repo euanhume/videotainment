@@ -21,27 +21,27 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'OrderDate'); ?>
-		<?php echo $form->textField($model,'OrderDate'); ?>
+		<?php echo date('d/m/Y', $model->OrderDate);?> 
 		<?php echo $form->error($model,'OrderDate'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'OrderStatus'); ?>
-		<?php echo $form->textField($model,'OrderStatus',array('size'=>60,'maxlength'=>255)); ?>
+                <?php echo $form->dropDownList($model,'OrderStatus', array('active'=>'Active', 'cancelled'=>'Cancelled')); ?> 
 		<?php echo $form->error($model,'OrderStatus'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'OrderShippingDate'); ?>
-		<?php echo $form->textField($model,'OrderShippingDate'); ?>
+		<?php echo date('d/m/Y', $model->OrderDate); ?>
 		<?php echo $form->error($model,'OrderShippingDate'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'UserID'); ?>
-		<?php echo $form->textField($model,'UserID'); ?>
-		<?php echo $form->error($model,'UserID'); ?>
-	</div>
+	<!--<div class="row">
+		<?php //echo $form->labelEx($model,'UserID'); ?>
+		<?php //echo $form->textField($model,'UserID'); ?>
+		<?php //echo $form->error($model,'UserID'); ?>
+	</div>-->
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>

@@ -8,5 +8,9 @@ $this->breadcrumbs=array(
 ?>
 <h1>About</h1>
 
-<p>This is a "static" page. You may change the content of this page
-by updating the file <code><?php echo __FILE__; ?></code>.</p>
+<p>Disclaimer: This is not a real video game website and is part of a dissertation.</p>
+<ul>
+    <li>Name: Euan Hume</li>
+    <li>Student No: a9001928</li>
+    <li>Course: MComp Computing and Information Systems</li>
+</ul>

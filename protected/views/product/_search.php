@@ -3,11 +3,10 @@
 /* @var $model Product */
 /* @var $form CActiveForm */
 ?>
-
 <div class="wide form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'action'=>Yii::app()->createUrl('/product/view/'),
+	'action'=>Yii::app()->createUrl('/product/viewall/'),
 	'method'=>'get',
 )); ?>
 
@@ -16,17 +15,18 @@
       'attribute'=>'ProductName',
         'model'=>$model['ProductName'],
         'sourceUrl'=>array('product/aclist'),
-        'name'=>'productname',
+        'name'=>'search',
         'options'=>array(
           'minLength'=>'1',
         ),
         'htmlOptions'=>array(
           'size'=>45,
           'maxlength'=>45,
+          'class'=>'center',
         ),
   )); ?>
 
-      <?php echo CHtml::submitButton('Search', $htmlOptions = array('name' => '')); ?>
+      <?php echo CHtml::submitButton('Search', $htmlOptions = array('name' => '', 'class'=>'center')); ?>
 
 
 <?php $this->endWidget(); ?>

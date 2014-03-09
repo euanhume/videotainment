@@ -146,7 +146,7 @@ div.breadcrumbs span
 	font-weight: bold;
 }
 
-div.search-form
+#search-form
 {
 	padding: 10px;
 	margin: 10px 0;
@@ -236,6 +236,23 @@ div.search-form
    text-align: center;
 }
 
+#product{
+  width:920px; 
+ 
+}
+.product-des{
+    width:890px;
+    margin:10px;
+   padding: 5px 5px;
+   float:left;
+   -webkit-box-shadow: -2px 9px 54px -4px rgba(163,155,163,1);
+    -moz-box-shadow: -2px 9px 54px -4px rgba(163,155,163,1);
+    box-shadow: -2px 9px 54px -4px rgba(163,155,163,1);
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+
 .block
 {
    width:200px;
@@ -251,3 +268,15 @@ div.search-form
     border-radius: 15px;
    
 }
+
+.product-img{
+   float:left;
+   padding: 10px;
+}
+
+.product-info{
+   float:left;
+   padding: 10px;
+   width: 600px;
+}
+

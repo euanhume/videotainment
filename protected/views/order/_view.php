@@ -10,7 +10,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('OrderDate')); ?>:</b>
-	<?php echo CHtml::encode($data->OrderDate); ?>
+	<?php echo CHtml::encode(date('d/m/Y', $data->OrderDate)); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('OrderStatus')); ?>:</b>
@@ -18,12 +18,11 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('OrderShippingDate')); ?>:</b>
-	<?php echo CHtml::encode($data->OrderShippingDate); ?>
+	<?php echo CHtml::encode(date('d/m/Y', $data->OrderShippingDate)); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('UserID')); ?>:</b>
 	<?php echo CHtml::encode($data->UserID); ?>
 	<br />
-
-
+        <?php echo CHtml::button('Edit', array('submit' => array('order/update/'.$data->OrderID))); ?>
 </div>

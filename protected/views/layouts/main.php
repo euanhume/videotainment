@@ -30,16 +30,16 @@
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
 				array('label'=>'Home', 'url'=>array('/site/index')),
-                                array('label'=>'Playstation 4', 'url'=>array('/product/playstation4')),
-                                array('label'=>'Xbox One', 'url'=>array('/product/xboxone')),
-                                array('label'=>'Wii', 'url'=>array('/product/wii')),
-                                array('label'=>'Playstaion 3', 'url'=>array('/product/playstaion3')),
-                                array('label'=>'Xbox 360', 'url'=>array('/product/xbox360')),
+                                array('label'=>'Playstation 4', 'url'=>array('/product/viewall?console=Playstation+4')),
+                                array('label'=>'Xbox One', 'url'=>array('/product/viewall?console=Xbox+One')),
+                                array('label'=>'Wii', 'url'=>array('/product/viewall?console=Wii')),
 				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
 				array('label'=>'Contact', 'url'=>array('/site/contact')),
 				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
-                                array('label'=>'Users', 'url'=>array('/user/index'), array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'))
+                                array('label'=>'Orders', 'url'=>array('/order/admin'), 'visible'=>Yii::app()->user->name == 'admin'), 
+                                array('label'=>'Users', 'url'=>array('/user/admin'), 'visible'=>Yii::app()->user->name == 'admin', array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'))
+                                    
 			)),
 		)); ?>
 	</div><!-- mainmenu -->
