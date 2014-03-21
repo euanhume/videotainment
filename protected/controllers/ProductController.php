@@ -78,13 +78,22 @@ class ProductController extends Controller
 	public function actionView($id)
 	{
                 $criteria = new CDbCriteria;
-                 $criteria->select = 't.ProductTypeName';
+                 $criteria->select = 't.ProductTypeName, t.ProductTypeID';
                  $criteria->join = 'LEFT JOIN `product` ON t.ProductTypeID = product.ProductTypeID';
                  $criteria->condition = 'product.ProductID = :value';
                  $criteria->params = array(":value" => $id);
                  $console = ProductType::model()->find($criteria);    
+
+                 $criteria = new CDbCriteria;
+                 $criteria->select = 't.*';
+                 $criteria->condition = 't.ProductID != :id AND t.ProductTypeID = :productTypeID';
+                 $criteria->params = array(":id" => $id, ":productTypeID" => $console['ProductTypeID']);
+                 $criteria->order = 'RAND()'; 
+                 $criteria->limit = '4';
+                 $games = Product::model()->findAll($criteria);
+
 		 $this->render('view',array(
-			'model'=>$this->loadModel($id),'console'=>$console['ProductTypeName']
+			'model'=>$this->loadModel($id),'console'=>$console['ProductTypeName'], 'games'=>$games
 		));
 	}
 

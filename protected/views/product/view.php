@@ -33,6 +33,20 @@ $this->menu=array(
     </div>
 </div>
 
+<h3>You may also be interested in</h3>
+<div id="otherProducts">
+     <?php foreach($games as $game): ?>
+         <div class="block">
+             <a href='<?php echo 'view/'.$game['ProductID']; ?>'><img src="<?php echo $this->imageURL.$game['ProductImg'].'.jpg'; ?>" height="135px" width="117px" /></a>
+             <br />
+             <h5><a href='<?php echo 'view/'.$game['ProductID']; ?>'><?php echo $game['ProductName']; ?></a></h5>
+             <h5>£<?php echo $game['ProductPrice']; ?></h5>
+             <?php echo CHtml::button('View', array('submit' => array('product/view/'.$game['ProductID']))); ?>
+             <?php echo CHtml::button('Order', array('submit' => array('order/create/'.$model->ProductID))); ?>
+         </div>
+     <?php endforeach; ?>
+</div>
+
 <?php /*$this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
